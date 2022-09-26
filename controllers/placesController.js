@@ -43,10 +43,7 @@ const getPlacesByUserId = async (req, res, next) => {
   }
 
   if (!user || user.places.length === 0) {
-    const error = new httpError(
-      "Could not find places for the provided user id",
-      404
-    );
+    const error = new httpError("This user has not posted places yet!", 404);
     return next(error);
   }
   res.json({
