@@ -6,10 +6,9 @@ const Place = require("../models/places");
 const User = require("../models/users");
 const mongoose = require("mongoose");
 
-
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
-  
+
   let place;
   try {
     place = await Place.findById(placeId);
@@ -73,7 +72,7 @@ const createPlace = async (req, res, next) => {
     title, // title : title
     description,
     address,
-    image: "https://media.timeout.com/images/101705309/image.jpg",
+    image: req.file.path,
     creatorId: creator,
     location: coordinates,
   });
